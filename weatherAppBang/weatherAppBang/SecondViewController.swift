@@ -3,8 +3,6 @@
 //  weatherAppBang
 //
 //  Created by 방민지 on 2023/10/21.
-//
-
 import UIKit
 
 class SecondViewController: UIViewController {
@@ -15,23 +13,465 @@ class SecondViewController: UIViewController {
     private var contentView2 = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true;
+        self.navigationController?.navigationBar.isHidden = true
         list.addTarget(self, action: #selector(handleListTap), for: .touchUpInside)
         setLayout()
     }
     @objc func handleListTap() {
         navigationController?.popViewController(animated: true)
     }
+    
+    private var background: UIImageView = {
+        let backImage = UIImageView()
+        backImage.frame = UIScreen.main.bounds
+        backImage.contentMode = .scaleAspectFill
+        backImage.image = UIImage(named: "background")
+        return backImage
+    }()
+    
+    private var stackView3: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 111, bottom: 0, right: 111)
+        stackView.spacing = 4
+        return stackView
+    }()
+    
+    private var timeTable: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 32
+        return stackView
+    }()
+    
+    private var weatherTable: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 32
+        return stackView
+    }()
+    
+    private var tempTable: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 32
+        return stackView
+    }()
+    
+    
+    
+    private var time1: UILabel = {
+        let label = UILabel()
+        label.text = "Now"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time2: UILabel = {
+        let label = UILabel()
+        label.text = "10시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time3: UILabel = {
+        let label = UILabel()
+        label.text = "11시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time4: UILabel = {
+        let label = UILabel()
+        label.text = "12시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time5: UILabel = {
+        let label = UILabel()
+        label.text = "1시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time6: UILabel = {
+        let label = UILabel()
+        label.text = "2시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time7: UILabel = {
+        let label = UILabel()
+        label.text = "3시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time8: UILabel = {
+        let label = UILabel()
+        label.text = "4시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time9: UILabel = {
+        let label = UILabel()
+        label.text = "5시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var time10: UILabel = {
+        let label = UILabel()
+        label.text = "6시"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
+        label.font = .sfPro(size: 17, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var image1: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "nightCloud")
+        return image
+    }()
+    
+    private var image2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "rainy")
+        return image
+    }()
+    
+    private var image3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "heavyRain")
+        return image
+    }()
+    
+    private var image4: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "thunder")
+        return image
+    }()
+    
+    private var image5: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "foxRain")
+        return image
+    }()
+    
+    private var image6: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "rainy")
+        return image
+    }()
+    
+    private var image7: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "rainy")
+        return image
+    }()
+    
+    private var image8: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "rainy")
+        return image
+    }()
+    
+    private var image9: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "rainy")
+        return image
+    }()
+    
+    private var image10: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "rainy")
+        return image
+    }()
+    
+    private var temp1: UILabel = {
+        let label = UILabel()
+        label.text = "21°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp2: UILabel = {
+        let label = UILabel()
+        label.text = "21°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp3: UILabel = {
+        let label = UILabel()
+        label.text = "19°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp4: UILabel = {
+        let label = UILabel()
+        label.text = "19°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp5: UILabel = {
+        let label = UILabel()
+        label.text = "19°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp6: UILabel = {
+        let label = UILabel()
+        label.text = "19°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp7: UILabel = {
+        let label = UILabel()
+        label.text = "19°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp8: UILabel = {
+        let label = UILabel()
+        label.text = "99°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp9: UILabel = {
+        let label = UILabel()
+        label.text = "19°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var temp10: UILabel = {
+        let label = UILabel()
+        label.text = "20°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
+        label.font = .sfPro(size: 22, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var weatherbox: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.layer.backgroundColor = UIColor.clear.cgColor
+        view.layer.cornerRadius = 15
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25).cgColor
+        return view
+    }()
+    
+    private var bottomBar: UIStackView = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.layer.backgroundColor = UIColor.clear.cgColor
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25).cgColor
+        return view
+    }()
+    
+    
+    private var titleLabel2: UILabel = {
+        let label = UILabel()
+        label.text = "의정부시"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = .sfPro(size: 36, weight: .regular )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private var temLabel: UILabel = {
+        let label = UILabel()
+        label.text = "21°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = .sfPro(size: 102, weight: .thin )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private var weatherLabel: UILabel = {
+        let label = UILabel()
+        label.text = "흐림"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = .sfPro(size: 24, weight: .regular )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private var highlowLabel: UILabel = {
+        let label = UILabel()
+        label.text = "최고:29° 최저:15°"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = .sfPro(size: 20, weight: .medium )
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private var stateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "08:00~09:00에 강우 상태가, 18:00에 한때 흐린 상태가 예상됩니다."
+        label.widthAnchor.constraint(equalToConstant: 305).isActive = true
+        label.textColor = .white
+        label.font = .sfPro(size: 18, weight: .regular)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private var line: UIView = {
+        let line = UIView()
+        line.alpha = 0.2
+        line.backgroundColor = UIColor.white
+        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return line
+    }()
+    
+    private var map: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "map")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    private var myLocation: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "myLocation")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    private var dot: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "dot")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    private  var list: UIButton = {
+        let list = UIButton()
+        list.setImage(UIImage(named: "list"), for: .normal)
+        list.isUserInteractionEnabled = true
+        return list
+    }()
+    
 }
 
 private extension SecondViewController {
     func setLayout() {
         self.view.addSubview(background)
-        //self.view.addSubview(bottomBar)
         self.view.addSubview(verticalScrollView)
         verticalScrollView.addSubview(contentView1)
         contentView1.addSubViews(stackView3, weatherbox)
-        contentView1.addSubview(horizontalScrollView)
+        //contentView1.addSubview(horizontalScrollView)
+        weatherbox.addSubview(horizontalScrollView)
         horizontalScrollView.addSubViews(timeTable, weatherTable, tempTable)
         weatherbox.addSubview(stateLabel)
         weatherbox.addSubview(line)
@@ -75,6 +515,7 @@ private extension SecondViewController {
         let contentViewHeight = contentView1.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
         contentViewHeight.priority = .defaultLow
         contentViewHeight.isActive = true
+        verticalScrollView.alwaysBounceVertical = true
         
         NSLayoutConstraint.activate([horizontalScrollView.topAnchor.constraint(equalTo: weatherbox.topAnchor),
                                      horizontalScrollView.leadingAnchor.constraint(equalTo: weatherbox.leadingAnchor),
@@ -172,453 +613,3 @@ private extension SecondViewController {
         ])
     }
 }
-
-private var background: UIImageView = {
-    let backImage = UIImageView()
-    backImage.frame = UIScreen.main.bounds
-    backImage.contentMode = .scaleAspectFill
-    backImage.image = UIImage(named: "background")
-    return backImage
-}()
-
-private var stackView3: UIStackView = {
-    let stackView = UIStackView()
-    stackView.axis = .vertical
-    stackView.distribution = .fill
-    stackView.layoutMargins = UIEdgeInsets(top: 0, left: 111, bottom: 0, right: 111)
-    stackView.spacing = 4
-    return stackView
-}()
-
-private var timeTable: UIStackView = {
-    let stackView = UIStackView()
-    stackView.axis = .horizontal
-    stackView.distribution = .fillEqually
-    stackView.alignment = .fill
-    stackView.spacing = 32
-    return stackView
-}()
-
-private var weatherTable: UIStackView = {
-    let stackView = UIStackView()
-    stackView.axis = .horizontal
-    stackView.distribution = .fillEqually
-    stackView.alignment = .fill
-    stackView.spacing = 32
-    return stackView
-}()
-
-private var tempTable: UIStackView = {
-    let stackView = UIStackView()
-    stackView.axis = .horizontal
-    stackView.distribution = .fillEqually
-    stackView.alignment = .fill
-    stackView.spacing = 32
-    return stackView
-}()
-
-
-
-private var time1: UILabel = {
-    let label = UILabel()
-    label.text = "Now"
-    label.textAlignment = .center                                       
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time2: UILabel = {
-    let label = UILabel()
-    label.text = "10시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time3: UILabel = {
-    let label = UILabel()
-    label.text = "11시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time4: UILabel = {
-    let label = UILabel()
-    label.text = "12시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time5: UILabel = {
-    let label = UILabel()
-    label.text = "1시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time6: UILabel = {
-    let label = UILabel()
-    label.text = "2시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time7: UILabel = {
-    let label = UILabel()
-    label.text = "3시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time8: UILabel = {
-    let label = UILabel()
-    label.text = "4시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time9: UILabel = {
-    let label = UILabel()
-    label.text = "5시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var time10: UILabel = {
-    let label = UILabel()
-    label.text = "6시"
-    label.textAlignment = .center
-    label.textColor = .white
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 22)
-    label.font = .sfPro(size: 17, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var image1: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "nightCloud")
-    return image
-}()
-
-private var image2: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "rainy")
-    return image
-}()
-
-private var image3: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "heavyRain")
-    return image
-}()
-
-private var image4: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "thunder")
-    return image
-}()
-
-private var image5: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "foxRain")
-    return image
-}()
-
-private var image6: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "rainy")
-    return image
-}()
-
-private var image7: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "rainy")
-    return image
-}()
-
-private var image8: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "rainy")
-    return image
-}()
-
-private var image9: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "rainy")
-    return image
-}()
-
-private var image10: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "rainy")
-    return image
-}()
-
-private var temp1: UILabel = {
-    let label = UILabel()
-    label.text = "21°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp2: UILabel = {
-    let label = UILabel()
-    label.text = "21°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp3: UILabel = {
-    let label = UILabel()
-    label.text = "19°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp4: UILabel = {
-    let label = UILabel()
-    label.text = "19°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp5: UILabel = {
-    let label = UILabel()
-    label.text = "19°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp6: UILabel = {
-    let label = UILabel()
-    label.text = "19°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp7: UILabel = {
-    let label = UILabel()
-    label.text = "19°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp8: UILabel = {
-    let label = UILabel()
-    label.text = "99°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp9: UILabel = {
-    let label = UILabel()
-    label.text = "19°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var temp10: UILabel = {
-    let label = UILabel()
-    label.text = "20°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.frame = CGRect(x: 0, y: 0, width: 44, height: 28)
-    label.font = .sfPro(size: 22, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-}()
-
-private var weatherbox: UIStackView = {
-    let view = UIStackView()
-    view.axis = .vertical
-    view.layer.backgroundColor = UIColor.clear.cgColor
-    view.layer.cornerRadius = 15
-    view.layer.borderWidth = 0.5
-    view.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25).cgColor
-    return view
-}()
-
-private var bottomBar: UIStackView = {
-    let view = UIStackView()
-    view.axis = .horizontal
-    view.layer.backgroundColor = UIColor.clear.cgColor
-    view.layer.borderWidth = 0.5
-    view.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25).cgColor
-    return view
-}()
-
-
-private var titleLabel2: UILabel = {
-    let label = UILabel()
-    label.text = "의정부시"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.font = .sfPro(size: 36, weight: .regular )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.adjustsFontSizeToFitWidth = true
-    return label
-}()
-
-private var temLabel: UILabel = {
-    let label = UILabel()
-    label.text = "21°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.font = .sfPro(size: 102, weight: .thin )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.adjustsFontSizeToFitWidth = true
-   return label
-}()
-
-private var weatherLabel: UILabel = {
-    let label = UILabel()
-    label.text = "흐림"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.font = .sfPro(size: 24, weight: .regular )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.adjustsFontSizeToFitWidth = true
-   return label
-}()
-
-private var highlowLabel: UILabel = {
-    let label = UILabel()
-    label.text = "최고:29° 최저:15°"
-    label.textColor = .white
-    label.textAlignment = .center
-    label.font = .sfPro(size: 20, weight: .medium )
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.adjustsFontSizeToFitWidth = true
-   return label
-}()
-
-private var stateLabel: UILabel = {
-    let label = UILabel()
-    label.text = "08:00~09:00에 강우 상태가, 18:00에 한때 흐린 상태가 예상됩니다."
-    label.widthAnchor.constraint(equalToConstant: 305).isActive = true
-    label.textColor = .white
-    label.font = .sfPro(size: 18, weight: .regular)
-    label.numberOfLines = 0
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.adjustsFontSizeToFitWidth = true
-   return label
-}()
-
-private var line: UIView = {
-   let line = UIView()
-    line.alpha = 0.2
-    line.backgroundColor = UIColor.white
-    line.heightAnchor.constraint(equalToConstant: 1).isActive = true
-    return line
-}()
-
-private var map: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "map")
-    image.translatesAutoresizingMaskIntoConstraints = false
-    image.contentMode = .scaleAspectFit
-    return image
-}()
-
-private var myLocation: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "myLocation")
-    image.translatesAutoresizingMaskIntoConstraints = false
-    image.contentMode = .scaleAspectFit
-    return image
-}()
-
-private var dot: UIImageView = {
-    let image = UIImageView()
-    image.image = UIImage(named: "dot")
-    image.translatesAutoresizingMaskIntoConstraints = false
-    image.contentMode = .scaleAspectFit
-    return image
-}()
-
-//private var list: UIImageView = {
-//    let image = UIImageView()
-//    image.image = UIImage(named: "list")
-//    image.translatesAutoresizingMaskIntoConstraints = false
-//    image.contentMode = .scaleAspectFit
-//    return image
-//}()
-
-private  var list: UIButton = {
-    let list = UIButton()
-    list.setImage(UIImage(named: "list"), for: .normal)
-    list.isUserInteractionEnabled = true
-    return list
-}()
-
