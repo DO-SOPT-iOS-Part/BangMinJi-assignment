@@ -4,6 +4,8 @@
 //
 //  Created by 방민지 on 2023/10/21.
 import UIKit
+import SnapKit
+import Then
 
 class SecondViewController: UIViewController {
     
